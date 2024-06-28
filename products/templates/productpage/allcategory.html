@@ -1,0 +1,57 @@
+{% extends "layouts.html" %}
+
+
+{% block title %}
+<title>Merosite - All Category</title>
+{% endblock %}
+
+
+{% block main-content %}
+
+
+<div class="container">
+    {% for msg in messages %}
+    {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <div class="alert alert-success">{{msg}}</div>
+    {% endif %}
+
+    {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <div class="alert alert-danger">{{msg}}</div>
+    {% endif %}
+    {% endfor %}
+
+    <div class="d-flex justify-content-center py-4">
+
+
+        <div class="col-md-5">
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Name</th>
+                    <th>Action</th>
+
+                </tr>
+
+                {% for catItems in category %}
+                <tr>
+                    <td>{{catItems.name}}</td>
+                    <td>
+                        <a href="/updatecategory/{{catItems.id}}" class="btn btn-secondary"><i class="fa-regular fa-pen-to-square fa-beat-fade" style="color: #74C0FC;"></i></a>
+
+                        <a href="/deletecategory/{{catItems.id}}" class="btn btn-info"
+                            onclick="return confirm('Are you surrly want to delete this item?')"><i
+                                class="fa-solid fa-trash fa-beat-fade" style="color: #e60017;"></i></a>
+                    </td>
+
+
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+
+{% endblock %}

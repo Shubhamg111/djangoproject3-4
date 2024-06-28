@@ -1,15 +1,24 @@
 {% extends "layouts.html" %}
 
-{% block main-content %}
-  
-    <!-- {% for v in prodData  %}
 
-    <h1>{{v.name}}</h1>
-    <img src="{{v.image}}" alt="" width="500px">
-      
-    {% endfor %} -->
+{% block title %}
+  <title>Merosite - All Products</title>
+{% endblock %}
+
+
+{% block main-content %}
+
 
     <div class="container">
+        {% for msg in messages %}
+        {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        <div class="alert alert-success">{{msg}}</div>
+        {% endif %}
+    
+        {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <div class="alert alert-danger">{{msg}}</div>
+        {% endif %}
+        {% endfor %}
         <div class="d-flex justify-content-center py-4">
             <div class="col-md-10">
                 <table class="table table-border table-striped">
@@ -19,6 +28,7 @@
                         <th>Quantity</th>
                         <th>description</th>
                         <th>Image</th>
+                        <th>Action</th>
                         
                     </tr>
 
@@ -28,12 +38,21 @@
                         <td>{{product.price}}</td>
                         <td>{{product.quantity}}</td>
                         <td>{{product.description}}</td>
-                        <td><img src="{{product.image}}" alt="{{product.name}}" width="70px"></td>
+                        <td><img src="/{{product.image}}" alt="{{product.name}}" width="70px"></td>
+                        <td>
+                          <a href="/updateproduct/{{product.id}}" class="btn btn-secondary"><i class="fa-regular fa-pen-to-square fa-beat-fade" style="color: #74C0FC;"></i></a>
+  
+                          <a href="/deleteproduct/{{product.id}}" class="btn btn-info"
+                              onclick="return confirm('Are you surely want to delete this item?')"><i
+                                  class="fa-solid fa-trash fa-beat-fade" style="color: #e60017;"></i></a>
+                      </td>
 
                       </tr>
                     {% endfor %}
 
                 </table>
+
+                <a href="/logout">Logout</a>
             </div>
 
         </div>

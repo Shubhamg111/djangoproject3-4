@@ -1,0 +1,52 @@
+{% extends "layouts.html" %}
+{% load static %}
+
+
+{% block title %}
+<title>Merosite - Product View</title>
+{% endblock %}
+
+
+{% block main-content %}
+{% include "header.html" %}
+
+
+
+
+<!-- start of productview  -->
+<div class="container">
+ <div class="d-md-flex justify-content-evenly shadow my-5 p-2">
+     
+        <div class="image col-md-5">
+            <img src="/{{products.image}}" alt="{{products.name}}" width="100%" height="100%">
+        </div>
+        <div class="details col-md-6">
+            <a href="#">Home</a> /
+            <a href="#">Products</a> /
+            <span>{{products.name}}</span>
+
+            <h2 class="m-0">{{products.name}}</h2>
+            <small class="text-secondary">{{products.category}}</small>
+            <p class="my-3"><span class="fw-bold text-success">Price</span> : ${{products.price}}</p>
+            <p class="fw-bold m-0">Description</p> 
+            <p>{{products.description}}</p>
+
+            <hr class="container w-75">
+
+            <div class="btn my-2">
+                <a href="#" class="btn btn-warning me-5">Add to Cart</a>
+                <a href="#" class="btn btn-success">Add to Wishlist</a>
+            </div>
+
+
+        </div>
+ 
+
+ </div>
+</div>
+<!-- end of products  -->
+
+
+
+{% include "footer.html" %}
+{% endblock %}

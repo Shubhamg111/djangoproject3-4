@@ -1,0 +1,109 @@
+{% extends "layouts.html" %}
+{% load static %}
+
+
+{% block title %}
+<title>Merosite - All Products</title>
+{% endblock %}
+
+
+{% block main-content %}
+{% include "header.html" %}
+
+<!-- CDN  link fro owl Carousel -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css"
+  integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css"
+  integrity="sha512-OTcub78R3msOCtY3Tc6FzeDJ8N9qvQn1Ph49ou13xgA9VsH9+LRxoFU6EqLhW4+PKRfU+/HReXmSZXHEkpYoOA=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- start of carousel/banner -->
+<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'images/b1.jpg' %}" class="d-block w-100" alt="banner">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/b2.jpg' %}" class="d-block w-100" alt="banner">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/b3.avif' %}" class="d-block w-100" alt="banner">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<!-- end of carousel -->
+
+<!-- start of owl-carousel -->
+<div class="owl-carousel">
+  <div><img src="../../static/images/p1.jpeg" alt=""> </div>
+  <div><img src="../../static/images/p1.jpeg" alt=""> </div>
+  <div><img src="../../static/images/p1.jpeg" alt=""> </div>
+  <div><img src="../../static/images/p1.jpeg" alt=""> </div>
+  <div><img src="../../static/images/p1.jpeg" alt=""> </div>
+  <div><img src="../../static/images/p1.jpeg" alt=""> </div>
+  <div><img src="../../static/images/p1.jpeg" alt=""> </div>
+  <div><img src="../../static/images/p1.jpeg" alt=""> </div>
+
+
+</div>
+ <!-- end of owl-carousel -->
+
+
+<!-- start of product  -->
+<div class="container py-5">
+  <h2 class="text-danger">Trending Products</h2>
+  <hr class="container">
+  <div class="row row-cols-1 row-cols-md-4 g-3">
+    {% for prod in products %}
+    <div class="col">
+      <div class="card rounded shadow p-1">
+        <div class="image">
+          <img src="/{{prod.image}}" alt="{{prod.name}}">
+        </div>
+        <div class="card-content">
+          <h5 class="m-0">{{prod.name}}</h5>
+          <p class="text-success my-2 fw-bold">${{prod.price}}...</p>
+          <p class="btn btn-primary p-1 ">View Details</p>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+
+  </div>
+
+</div>
+<!-- end of products  -->
+
+<!-- CDN JS for jquery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+  integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+  var owl = $('.owl-carousel');
+  owl.owlCarousel({
+    items: 6,
+    loop: true,
+    margin: 30,
+    autoplay: true,
+    autoplayTimeout: 2000,
+    autoplayHoverPause: true
+  });
+</script>
+
+{% include "footer.html" %}
+{% endblock %}

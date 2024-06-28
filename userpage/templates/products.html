@@ -1,0 +1,43 @@
+{% extends "layouts.html" %}
+{% load static %}
+
+
+{% block title %}
+<title>Merosite - All Products</title>
+{% endblock %}
+
+
+{% block main-content %}
+{% include "header.html" %}
+
+
+<!-- start of product  -->
+<div class="container-fluid">
+  <div class="row row-cols-1 row-cols-md-4">
+    {% for prod in allproducts %}
+    <div class="col shadow mx-3 my-3">
+      <div class="card rounded p-1">
+        <div class="image">
+          <img src="/{{prod.image}}" alt="{{prod.name}}">
+        </div>
+        <div class="card-content">
+          <h5 class="m-0">{{prod.name}}</h5>
+          <p class="text-success my-2 fw-bold">${{prod.price}}...</p>
+          <a href="/productview/{{prod.id}}"><p class="btn btn-primary p-1 ">View Details</p></a>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+
+  </div>
+
+</div>
+<!-- end of products  -->
+
+
+
+
+
+{% include "footer.html" %}
+{% endblock %}
